@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_154940) do
+ActiveRecord::Schema.define(version: 2020_03_24_163319) do
 
-  create_table "exercise_patterns", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.integer "sets"
     t.integer "reps"
     t.float "weight"
     t.integer "exercise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["exercise_id"], name: "index_exercise_patterns_on_exercise_id"
+    t.index ["exercise_id"], name: "index_activities_on_exercise_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -47,13 +47,13 @@ ActiveRecord::Schema.define(version: 2020_03_24_154940) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "workout_exercise_patterns", force: :cascade do |t|
-    t.integer "exercise_pattern_id", null: false
+  create_table "workout_activities", force: :cascade do |t|
+    t.integer "activity_id", null: false
     t.integer "workout_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["exercise_pattern_id"], name: "index_workout_exercise_patterns_on_exercise_pattern_id"
-    t.index ["workout_id"], name: "index_workout_exercise_patterns_on_workout_id"
+    t.index ["activity_id"], name: "index_workout_activities_on_activity_id"
+    t.index ["workout_id"], name: "index_workout_activities_on_workout_id"
   end
 
   create_table "workouts", force: :cascade do |t|
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2020_03_24_154940) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "exercise_patterns", "exercises"
+  add_foreign_key "activities", "exercises"
   add_foreign_key "user_workouts", "users"
   add_foreign_key "user_workouts", "workouts"
-  add_foreign_key "workout_exercise_patterns", "exercise_patterns"
-  add_foreign_key "workout_exercise_patterns", "workouts"
+  add_foreign_key "workout_activities", "activities"
+  add_foreign_key "workout_activities", "workouts"
 end

@@ -1,6 +1,6 @@
-class CreateExercisePatterns < ActiveRecord::Migration[6.0]
+class CreateActivities < ActiveRecord::Migration[6.0]
   def change
-    create_table :exercise_patterns do |t|
+    create_table :activities do |t|
       t.integer :sets
       t.integer :reps
       t.float :weight
