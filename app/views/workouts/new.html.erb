@@ -1,14 +1,18 @@
 <h2>New Workout</h2>
 
+<ul>
+<% @workout.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ul>
 
-<p><%= @workout.name %></p>
-<p><%= @workout.errors.full_messages %></p>
-
-<%= form_with model: @workout do |f| %>
+<%= form_with model: @workout, local: true do |f| %>
   
   <%= f.label :name %>
   <%= f.text_field :name %>
   
+  <br>
+
   <label>Activities</label>
   <ul>
     <%= f.fields_for :activities do |activities_form| %>

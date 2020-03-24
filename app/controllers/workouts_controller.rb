@@ -10,7 +10,7 @@ class WorkoutsController < ApplicationController
 
     def new
         @workout = Workout.new
-        3.times { @workout.activities.build }  # Make some empty activity so there is one displayed in the form
+        3.times { @workout.activities.build }  # Make some empty activities so they're displayed in the form
         @exercises = Exercise.order(:name)
     end
 
@@ -20,11 +20,7 @@ class WorkoutsController < ApplicationController
         if @workout.save
             redirect_to workout_path(@workout)
         else
-            # p '***************'
-            # p "ERRORS: #{ @workout.errors.full_messages { |key, value| p "#{key}: #{value}" } }"
-            # p '***************'
             render :new
-            # puts render_to_string :new
         end
     end
 

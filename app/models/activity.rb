@@ -6,7 +6,6 @@ class Activity < ApplicationRecord
 
   # Validations
   validates_presence_of :sets, :reps, :weight
-  # validates_associated :workouts
   # TODO: should maybe be unique on all columns so there aren't dupes?
 
 end
