@@ -1,4 +1,4 @@
-# Create users
+# Create Users
 5.times do
     User.create(
         name: Faker::Name.name,
@@ -7,7 +7,7 @@
     )
 end
 
-# Create exercises
+# Create Exercises
 exercise_names = [
     'Bench Press',
     'Dumbell Fly',
@@ -25,3 +25,14 @@ exercise_names.each do |exercise_name|
     Exercise.create(name: exercise_name)
 end
 
+# Create Workouts
+workout_names = [
+    'Chest Day',
+    'Push Day',
+    'Pull Day',
+    'Leg Day'
+]
+
+workout_names.each do |workout_name|
+    Workout.create(name: workout_name)
+end
