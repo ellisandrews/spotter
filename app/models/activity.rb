@@ -8,4 +8,8 @@ class Activity < ApplicationRecord
   validates_presence_of :sets, :reps, :weight
   # TODO: should maybe be unique on all columns so there aren't dupes?
 
+  def to_s
+    "#{exercise.name}: #{sets} / #{reps} / #{weight}"
+  end
+
 end

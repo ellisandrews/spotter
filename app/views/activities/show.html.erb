@@ -1,0 +1,9 @@
+<h2>Activity</h2>
+
+<p>Exercise: <%= @activity.exercise.name %></p>
+<p>Sets: <%= @activity.sets %></p>
+<p>Reps: <%= @activity.reps %></p>
+<p>Weight: <%= @activity.weight %> lbs</p>
+
+<%= button_to 'Edit', edit_activity_path(@activity), method: :get %>
+<%= button_to 'Delete', activity_path(@activity), method: :delete %>
