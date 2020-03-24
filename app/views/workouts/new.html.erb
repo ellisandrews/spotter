@@ -1,0 +1,36 @@
+<h2>New Workout</h2>
+
+
+<p><%= @workout.name %></p>
+<p><%= @workout.errors.full_messages %></p>
+
+<%= form_with model: @workout do |f| %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  
+  <label>Activities</label>
+  <ul>
+    <%= f.fields_for :activities do |activities_form| %>
+      <li>
+        <%= activities_form.label :exercise_id %>
+        <%= activities_form.collection_select :exercise_id, @exercises, :id, :name, prompt: true %>
+ 
+        <%= activities_form.label :sets %>
+        <%= activities_form.number_field :sets %>
+
+        <%= activities_form.label :reps %>
+        <%= activities_form.number_field :reps %>
+
+        <%= activities_form.label :weight %>
+        <%= activities_form.number_field :weight %>
+
+        <%= activities_form.label :_destroy %>
+        <%= activities_form.check_box :_destroy %>  
+      </li>
+    <% end %>
+  </ul>
+
+  <%= f.submit %>
+
+<% end %>

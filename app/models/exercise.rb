@@ -1,3 +1,3 @@
 class Exercise < ApplicationRecord
-    has_many :exercise_patterns
+    has_many :activities
 end
