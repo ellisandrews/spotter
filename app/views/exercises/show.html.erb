@@ -1,0 +1,13 @@
+<h2>Exercise:</h2>
+
+<% unless @exercise.image_url.blank? %>
+<img src="<%= @exercise.image_url %>" alt="<%= @exercise.name %>">
+<% end %>
+
+<p>Name: <%= @exercise.name %></p>
+<p>Description: <%= @exercise.description %></p>
+
+<br>
+
+<%= button_to 'Edit', edit_exercise_path(@exercise), method: :get %>
+<%= button_to 'Delete', exercise_path(@exercise), method: :delete %>

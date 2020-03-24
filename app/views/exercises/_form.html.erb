@@ -1,0 +1,26 @@
+<ul>
+<% exercise.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ul>
+
+<%= form_with model: exercise, local: true do |f| %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <br>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+    
+  <br><br>
+
+  <%= f.submit %>
+
+<% end %>
