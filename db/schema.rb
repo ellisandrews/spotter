@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2020_03_24_163319) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "activities", "exercises"
-  add_foreign_key "user_workouts", "users"
-  add_foreign_key "user_workouts", "workouts"
-  add_foreign_key "workout_activities", "activities"
-  add_foreign_key "workout_activities", "workouts"
+  add_foreign_key "activities", "exercises", on_delete: :cascade
+  add_foreign_key "user_workouts", "users", on_delete: :cascade
+  add_foreign_key "user_workouts", "workouts", on_delete: :cascade
+  add_foreign_key "workout_activities", "activities", on_delete: :cascade
+  add_foreign_key "workout_activities", "workouts", on_delete: :cascade
 end

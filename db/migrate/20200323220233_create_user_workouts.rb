@@ -3,8 +3,8 @@ class CreateUserWorkouts < ActiveRecord::Migration[6.0]
     create_table :user_workouts do |t|
       t.date :date
       t.boolean :completed
-      t.references :user, null: false, foreign_key: true
-      t.references :workout, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: {on_delete: :cascade}
+      t.references :workout, null: false, foreign_key: {on_delete: :cascade}
 
       t.timestamps
     end
