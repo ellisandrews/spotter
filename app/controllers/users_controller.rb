@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     def new
         # Show signup form
         @user = User.new
-        render layout: false
     end
 
     def create
@@ -22,7 +21,7 @@ class UsersController < ApplicationController
         else
             @user.password = nil
             @user.password_confirmation = nil
-            render :new, layout: false
+            render :new
         end
     end
 

@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
 
     def new
         # Display login form
-        render layout: false
     end
 
     def create

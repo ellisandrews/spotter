@@ -7,6 +7,7 @@
 <% if logged_in? %>
   <p>Happy lifting!</p>
 <% else %>
-  <p>Get started with an account.</p>
+  <p>Create an account or log in to start tracking your progress.</p>
   <%= button_to 'Sign Up', signup_path, method: :get %></li>
+  <%= button_to 'Log In', login_path, method: :get %></li>
 <% end %>
