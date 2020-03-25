@@ -34,6 +34,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # ----- CUSTOM ADDED ----- #
 
 gem 'faker', '~> 2.10'
+gem "simple_calendar", "~> 2.0"
 
 
 # ----- GROUPS ----- #

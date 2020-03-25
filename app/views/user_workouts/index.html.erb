@@ -1,0 +1,13 @@
+<h2>Workout Schedule</h2>
+
+<%= month_calendar(attribute: :date, events: @user_workouts) do |date, user_workouts| %>
+  
+  <%= date.day %>
+
+  <% user_workouts.each do |user_workout| %>
+    <div>
+      <%= link_to user_workout.workout.name, workout_path(user_workout.workout) %>
+    </div>
+  <% end %>
+
+<% end %>
