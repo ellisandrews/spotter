@@ -1,0 +1,23 @@
+<h2>Log In</h2>
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<%= form_with url: sessions_path, local: true do %>
+
+  <%= label_tag 'Email' %>
+  <%= text_field_tag :username %>
+  
+  <br>
+
+  <%= label_tag 'Password' %>
+  <%= password_field_tag :password %>
+  
+  <br><br>
+
+  <%= submit_tag 'Log In' %>
+
+<% end %>
+
+<p>Don't have an account? <%= link_to 'Sign up', signup_path %>.</p>

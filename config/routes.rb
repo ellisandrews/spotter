@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # Homepage
+  root 'sessions#welcome'
+
   # Standard model routes
   resources :activities, only: :show
   resources :exercises
@@ -12,7 +15,6 @@ Rails.application.routes.draw do
   # Sessions routes
   get 'login', to: 'sessions#new'
   post 'sessions', to: 'sessions#create'
-  get 'welcome', to: 'sessions#welcome'
   delete 'sessions', to: 'sessions#destroy'
 
 end
