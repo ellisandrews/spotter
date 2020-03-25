@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+    before_action :authorized, only: [:destroy]
+
     def new
         # Display login form
         render layout: false

@@ -1,5 +1,6 @@
 class WorkoutsController < ApplicationController
 
+    before_action :authorized
     before_action :set_workout, only: [:show, :edit, :update, :destroy]
     before_action :set_exercises, only: [:new, :edit]
 
