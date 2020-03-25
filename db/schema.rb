@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_163319) do
+ActiveRecord::Schema.define(version: 2020_03_25_173502) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "sets"
     t.integer "reps"
     t.float "weight"
     t.integer "exercise_id", null: false
+    t.integer "workout_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exercise_id"], name: "index_activities_on_exercise_id"
+    t.index ["workout_id"], name: "index_activities_on_workout_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -30,43 +32,53 @@ ActiveRecord::Schema.define(version: 2020_03_24_163319) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_workouts", force: :cascade do |t|
+  create_table "muscle_exercises", force: :cascade do |t|
+    t.integer "muscle_id", null: false
+    t.integer "exercise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["exercise_id"], name: "index_muscle_exercises_on_exercise_id"
+    t.index ["muscle_id"], name: "index_muscle_exercises_on_muscle_id"
+  end
+
+  create_table "muscles", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schedule_items", force: :cascade do |t|
     t.date "date"
     t.boolean "completed"
-    t.integer "user_id", null: false
     t.integer "workout_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_user_workouts_on_user_id"
-    t.index ["workout_id"], name: "index_user_workouts_on_workout_id"
+    t.index ["workout_id"], name: "index_schedule_items_on_workout_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "workout_activities", force: :cascade do |t|
-    t.integer "activity_id", null: false
-    t.integer "workout_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["activity_id"], name: "index_workout_activities_on_activity_id"
-    t.index ["workout_id"], name: "index_workout_activities_on_workout_id"
-  end
-
   create_table "workouts", force: :cascade do |t|
     t.string "name"
+    t.string "description"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
   add_foreign_key "activities", "exercises", on_delete: :cascade
-  add_foreign_key "user_workouts", "users", on_delete: :cascade
-  add_foreign_key "user_workouts", "workouts", on_delete: :cascade
-  add_foreign_key "workout_activities", "activities", on_delete: :cascade
-  add_foreign_key "workout_activities", "workouts", on_delete: :cascade
+  add_foreign_key "activities", "workouts", on_delete: :cascade
+  add_foreign_key "muscle_exercises", "exercises", on_delete: :cascade
+  add_foreign_key "muscle_exercises", "muscles", on_delete: :cascade
+  add_foreign_key "schedule_items", "workouts", on_delete: :cascade
+  add_foreign_key "workouts", "users", on_delete: :cascade
 end
