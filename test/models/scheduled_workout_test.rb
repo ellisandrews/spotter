@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ScheduleItemTest < ActiveSupport::TestCase
+class ScheduledWorkoutTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

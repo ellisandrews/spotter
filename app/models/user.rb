@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     # Associations
     has_many :workouts
+    has_many :scheduled_workouts, through: :workouts
 
     # Validations
     validates :first_name, presence: true
