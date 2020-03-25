@@ -1,0 +1,26 @@
+<ul>
+<% scheduled_workout.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+<% end %>
+</ul>
+
+<%= form_with model: scheduled_workout, local: true do |f| %>
+
+  <%= f.label :date %>
+  <%= f.date_select :date %>
+
+  <br>
+
+  <%= f.label :workout_id %>
+  <%= f.collection_select :workout_id, workouts, :id, :name, prompt: true %>
+
+  <br>
+
+  <%= f.label :completed %>
+  <%= f.check_box :completed %>
+
+  <br><br>
+
+  <%= f.submit 'Schedule Workout' %>
+
+<% end %>

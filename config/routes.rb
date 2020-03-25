@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :exercises
   resources :muscles, only: [:index, :show]
   resources :users, only: [:new, :create, :show]
-  resources :user_workouts, only: :index
+  resources :scheduled_workouts
   resources :workouts
 
   # Signup alias for '/users/new' route
