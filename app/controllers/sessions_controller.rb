@@ -6,9 +6,10 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(email: params[:email])
-        if @user && @user.authenticate(params[:password])
-            redirect_to welcome_path
+        user = User.find_by(email: params[:email])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect_to root_path
         else
             flash[:notice] = 'Invalid credentials. Please try again.'
             redirect_to login_path
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
     end
 
     def welcome
-        # Show homepage
+        # current_user  # Set the current user to @user if applicable
     end
 
 end
