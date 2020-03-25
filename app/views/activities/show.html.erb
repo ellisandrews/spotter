@@ -1,9 +1,12 @@
 <h2>Activity</h2>
 
-<p>Exercise: <%= @activity.exercise.name %></p>
+<p>Exercise: <%= link_to @activity.exercise.name, exercise_path(@activity.exercise) %></p>
 <p>Sets: <%= @activity.sets %></p>
 <p>Reps: <%= @activity.reps %></p>
 <p>Weight: <%= @activity.weight %> lbs</p>
-
-<%= button_to 'Edit', edit_activity_path(@activity), method: :get %>
-<%= button_to 'Delete', activity_path(@activity), method: :delete %>
+<p>Workout(s):</p>
+<ul>
+<% @activity.workouts.each do |workout| %>
+  <li><%= link_to workout.name, workout_path(workout) %></li>
+<% end %>
+</ul>
