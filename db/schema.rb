@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(version: 2020_03_25_173502) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "schedule_items", force: :cascade do |t|
+  create_table "scheduled_workouts", force: :cascade do |t|
     t.date "date"
     t.boolean "completed"
     t.integer "workout_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["workout_id"], name: "index_schedule_items_on_workout_id"
+    t.index ["workout_id"], name: "index_scheduled_workouts_on_workout_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,6 +79,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_173502) do
   add_foreign_key "activities", "workouts", on_delete: :cascade
   add_foreign_key "muscle_exercises", "exercises", on_delete: :cascade
   add_foreign_key "muscle_exercises", "muscles", on_delete: :cascade
-  add_foreign_key "schedule_items", "workouts", on_delete: :cascade
+  add_foreign_key "scheduled_workouts", "workouts", on_delete: :cascade
   add_foreign_key "workouts", "users", on_delete: :cascade
 end

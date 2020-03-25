@@ -11,6 +11,11 @@
   
   <br>
 
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  
+  <br>
+
   <label>Activities</label>
   <ul>
     <%= f.fields_for :activities do |activities_form| %>

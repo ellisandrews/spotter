@@ -63,3 +63,15 @@ User.all.each do |user|
         
     end
 end
+
+
+# Create some ScheduledWorkouts for user
+User.all.each do |user|
+
+    ScheduledWorkout.create!(
+        date: Date.today,
+        completed: Faker::Boolean.boolean,
+        workout: user.workouts.sample
+    )
+
+end
