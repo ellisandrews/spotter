@@ -1,0 +1,7 @@
+<h2>Scheduled Workout</h2>
+
+<p>Workout: <%= link_to @scheduled_workout.workout.name, workout_path(@scheduled_workout.workout) %></p>
+<p>Date: <%= @scheduled_workout.pretty_date %></p>
+<p>Completed: <%= @scheduled_workout.pretty_completed %></p>
+
+<%= link_to 'Back', scheduled_workouts_path %>
