@@ -20,4 +20,9 @@ class SessionsController < ApplicationController
         # current_user  # Set the current user to @user if applicable
     end
 
+    def destroy
+        session.delete(:user_id)
+        redirect_to root_path
+    end
+
 end

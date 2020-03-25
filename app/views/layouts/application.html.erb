@@ -14,6 +14,11 @@
     <h1>Spotter</h1>
     <%= link_to 'Workouts', workouts_path %>
     <%= link_to 'Exercises', exercises_path %>
+  <% if logged_in? %>
+    <%= link_to 'Logout', logout_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Login', login_path %>
+  <% end %>
 
     <%= yield %>
 
