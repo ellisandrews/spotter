@@ -1,3 +1,7 @@
 <h2>Add Workout</h2>
 
 <%= render partial: 'form', locals: { workout: @workout, exercises: @exercises } %>
+
+<br>
+
+<%= link_to 'All Workouts', workouts_path %>
