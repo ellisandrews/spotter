@@ -1,6 +1,6 @@
 class WorkoutsController < ApplicationController
 
-    before_action :authorized
+    before_action :logged_in
     before_action :set_workout, only: [:show, :edit, :update, :destroy, :add]
     before_action :set_exercises, only: [:new, :edit, :add]
 
@@ -61,14 +61,6 @@ class WorkoutsController < ApplicationController
     def add
         @workout = @workout.deep_clone include: :activities
     end
-
-    #     if new_workout.save
-    #         redirect_to edit_workout_path(new_workout)
-    #     else
-    #         flash[:error] = 'Failed to add workout'
-    #         redirect_to workouts_path
-    #     end
-    # end
 
     private
     

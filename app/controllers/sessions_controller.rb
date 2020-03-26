@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-    before_action :authorized, only: [:destroy]
+    before_action :logged_in, only: [:destroy]
 
     def new
         # Display login form

@@ -1,6 +1,6 @@
 class ScheduledWorkoutsController < ApplicationController
 
-    before_action :authorized
+    before_action :logged_in
     before_action :set_scheduled_workout, only: [:show, :edit, :update, :destroy]
     before_action :set_workouts, only: [:new, :edit]
 

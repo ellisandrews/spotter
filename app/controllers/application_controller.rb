@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in?, :not_found
 
     def current_user
         if session[:user_id]
@@ -12,8 +12,12 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
-    def authorized
+    def logged_in
         redirect_to login_path unless logged_in?
+    end
+
+    def not_found
+        raise ActionController::RoutingError.new('Not Found')
     end
 
 end

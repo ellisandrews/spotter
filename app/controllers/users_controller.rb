@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
-    before_action :authorized
-    skip_before_action :authorized, only: [:new, :create]
+    before_action :logged_in
+    skip_before_action :logged_in, only: [:new, :create]
+    before_action :authorized, except: [:new, :create]
 
     def show
     end
@@ -40,6 +41,10 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    end
+
+    def authorized
+        not_found if params[:id] && params[:id].to_i != @user.id
     end
 
 end
