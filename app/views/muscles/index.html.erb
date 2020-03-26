@@ -1,3 +1,7 @@
 <h2>Muscles</h2>
 
-<p>Coming soon...</p>
+<ul>
+<% @muscles.each do |muscle| %>
+  <li><%= link_to muscle.name, muscle_path(muscle) %></li>
+<% end %>
+</ul>

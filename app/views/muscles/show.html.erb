@@ -1,3 +1,13 @@
 <h2>Muscle</h2>
 
-<p>Coming soon...</p>
+<% if @muscle.image_url %>
+  <img src="<%= @muscle.image_url %>" alt="<%= @muscle.name %> image">
+<% end %>
+
+<p>Name: <%= @muscle.name %></p>
+<p>Exercises:</p>
+<ul>
+<% @muscle.exercises.each do |exercise| %>
+  <li><%= link_to exercise.name, exercise_path(exercise) %></li>
+<% end %>
+</ul>
