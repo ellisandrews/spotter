@@ -27,8 +27,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar buttons -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to 'Workouts', workouts_path, class: 'nav-link' %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Workouts
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to 'Browse', workouts_path, class: 'dropdown-item' %>
+              <%= link_to 'Create', new_workout_path, class: 'dropdown-item' %>
+            </div>
           </li>
           <li class="nav-item">
             <%= link_to 'Exercises', exercises_path, class: 'nav-link' %>

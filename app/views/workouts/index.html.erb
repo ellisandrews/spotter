@@ -13,7 +13,11 @@
   <tr>
     <td><%= link_to workout.name, workout_path(workout) %></td>
     <td><%= workout.description %></td>
+  <% if workout.user == current_user %>
+    <td></td>
+  <% else %>
     <td><%= button_to 'Add', root_path %></td>
+  <% end %>
   </tr>
 <% end %>
 </table>

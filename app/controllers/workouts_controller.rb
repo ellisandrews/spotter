@@ -8,7 +8,8 @@ class WorkoutsController < ApplicationController
     @@num_activities = 3
 
     def index
-        @workouts = Workout.where.not(user: current_user).order(:name)
+        # @workouts = Workout.where.not(user: current_user).order(:name)
+        @workouts = Workout.order(:name)
     end
 
     def show
