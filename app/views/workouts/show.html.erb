@@ -1,5 +1,6 @@
 <h2>Workout</h2>
 
+<p>Owner: <%= @workout.user.full_name %></p>
 <p>Name: <%= @workout.name %></p>
 <p>Description: <%= @workout.description %></p>
 <p>Activities:</p>
@@ -21,10 +22,11 @@
 <% end %>
 </table>
 
-<br>
-
-<%= button_to 'Edit', edit_workout_path(@workout), method: :get %>
-<%= button_to 'Delete', workout_path(@workout), method: :delete %>
+<% if @workout.user == @user %>
+  <br>
+  <%= button_to 'Edit', edit_workout_path(@workout), method: :get %>
+  <%= button_to 'Delete', workout_path(@workout), method: :delete %>
+<% end %>
 
 <br>
 
