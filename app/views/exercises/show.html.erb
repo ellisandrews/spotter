@@ -6,11 +6,12 @@
 
 <p>Name: <%= @exercise.name %></p>
 <p>Description: <%= @exercise.description %></p>
-
-<br>
-
-<%= button_to 'Edit', edit_exercise_path(@exercise), method: :get %>
-<%= button_to 'Delete', exercise_path(@exercise), method: :delete %>
+<p>Muscles:</p>
+<ul>
+<% @exercise.muscles.each do |muscle| %>
+  <li><%= link_to muscle.name, muscle_path(muscle) %></li>
+<% end %>
+</ul>
 
 <br>
 

@@ -10,7 +10,6 @@ class ExercisesController < ApplicationController
     def show
     end
 
-    # TODO: Admin only below here, as exercises are shared across users at present
     def new
         @exercise = Exercise.new
     end
@@ -25,6 +24,7 @@ class ExercisesController < ApplicationController
         end
     end
 
+    # Note: No routes for edit/update/destroy right now, as they are shared across users and should be admin-restricted
     def edit
     end
 
