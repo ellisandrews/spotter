@@ -33,8 +33,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # ----- CUSTOM ADDED ----- #
 
+gem 'deep_cloneable', '~> 3.0.0'
 gem 'faker', '~> 2.10'
-gem "simple_calendar", "~> 2.0"
+gem 'simple_calendar', '~> 2.0'
 
 
 # ----- GROUPS ----- #

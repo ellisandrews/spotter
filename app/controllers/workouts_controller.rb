@@ -59,13 +59,14 @@ class WorkoutsController < ApplicationController
     end
 
     def add
-        new_workout = @workout.dup
+        new_workout = @workout.deep_clone include: :activities
         new_workout.user = current_user
         
         if new_workout.save
             redirect_to workout_path(new_workout)
         else
-            flash[:error] = 'Failed to add workout'
+            # flash[:error] = 'Failed to add workout'
+            flash[:error] = new_workout.errors.full_messages
             redirect_to workouts_path
         end
     end

@@ -16,7 +16,7 @@
   <% if workout.user == current_user %>
     <td></td>
   <% else %>
-    <td><%= button_to 'Add', root_path %></td>
+    <td><%= button_to 'Add', add_workout_path(workout) %></td>
   <% end %>
   </tr>
 <% end %>
