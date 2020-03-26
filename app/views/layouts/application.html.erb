@@ -20,14 +20,12 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      
       <%= link_to 'Spotter', root_path , class: 'navbar-brand' %>
-
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar buttons -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <%= link_to 'Workouts', workouts_path, class: 'nav-link' %>
@@ -39,12 +37,22 @@
             <%= link_to 'Anatomy', muscles_path, class: 'nav-link' %>
           </li>
         </ul>
-
-      <% if logged_in? %>
-        <%= link_to 'Log Out', logout_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Log In', login_path %>
-      <% end %>
+        <!-- Menu dropdown -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+          <% if logged_in? %>
+            <%= button_to 'Profile', user_path(current_user), class: 'dropdown-item', method: :get %>
+            <%= button_to 'Schedule', scheduled_workouts_path, class: 'dropdown-item', method: :get %>
+            <div class="dropdown-divider"></div>
+            <%= button_to 'Log Out', logout_path, class: 'dropdown-item', method: :delete %>
+          <% else %>
+            <%= button_to 'Log In', login_path, class: 'dropdown-item', method: :get %>
+          <% end %>
+          </div>
+        </div>
       </div>
     </nav>
 
