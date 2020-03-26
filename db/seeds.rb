@@ -1,3 +1,6 @@
+require 'set'
+
+
 # Create my User
 User.create!(
     first_name: 'Ellis',
@@ -95,16 +98,19 @@ exercises.each do |exercise|
 end
 
 # Create some Workouts/Activities/ScheduledWorkouts for each User
-workout_terms = [
-    'Muscle',
-    'Ripper',
-    'Shred',
-    'Bulk',
-    'Juice',
-    'Power',
-    'Body',
-    'Mass'
-]
+
+$taken_workout_names = Set.new
+$workout_terms = ['Muscle', 'Ripper', 'Shred', 'Bulk', 'Juice', 'Power', 'Body', 'Mass']
+
+def new_workout_name()
+    while true
+        name = $workout_terms.sample(2).join(' ')  # Random name of 2 terms
+        if !$taken_workout_names.include? name
+            $taken_workout_names << name
+            return name
+        end
+    end
+end
 
 User.all.each do |user|
     
@@ -113,7 +119,7 @@ User.all.each do |user|
 
         # Initialize a new Workout for the User
         workout = Workout.new(
-            name: workout_terms.sample(2).join(' '),  # Random name of 2 terms
+            name: new_workout_name,
             user: user
         )
 
