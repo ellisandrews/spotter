@@ -1,5 +1,13 @@
-# Create Users
-5.times do
+# Create my User
+User.create!(
+    first_name: 'Ellis',
+    last_name: 'Andrews',
+    email: 'ellis@spotter.com',
+    password: 'pw'
+)
+
+# Create fake Users
+4.times do
     User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -8,29 +16,82 @@
     )
 end
 
-
 # Create Exercises and Muscles
-exercise_muslces = {
-    'Bench Press' => ['Pectorals', 'Triceps', 'Deltoids'],
-    'Dumbell Fly' => ['Pectorals'],
-    'Barbell Overhead Press' => ['Deltoids', 'Trapezius'],
-    'Dumbell Curl' => ['Biceps'],
-    'EZ Bar Curl' => ['Biceps'],
-    'Seated Row' => ['Latissimus Dorsi', 'Biceps'],
-    'Triceps Extension' => ['Triceps'],
-    'Squat' => ['Quadriceps', 'Glutes'],
-    'Deadlift' => ['Hamstrings', 'Glutes'],
-    'Calf Raise' => ['Calves']
-}
+exercises = [
+    {
+        'name' => 'Bench Press',
+        'description' => 'Lay flat on your back on a bench, and push a bar away from your chest.', 
+        'muscles' => ['Pectorals', 'Triceps', 'Deltoids']
+    },
+    {   
+        'name' => 'Dumbbell Fly',
+        'description' => 'Lay flat on your back on a bench, and raise dumbbells in each hand until they meet above the center of your chest.',
+        'muscles' => ['Pectorals']
+    },
+    {
+        'name' => 'Barbell Overhead Press',
+        'description' => 'Stand and raise a barbell over your head.',
+        'muscles' => ['Deltoids', 'Trapezius']
+    },
+    {
+        'name' => 'Dumbbell Curl',
+        'description' => 'Bend at the elbow to raise dumbbells in each hand from down at your sides up to your shoulders.',
+        'muscles' => ['Biceps']
+    },
+    {
+        'name' => 'EZ Bar Curl',
+        'description' => 'Bend at the elbow to raise an EZ Bar from down by your waist up to your shoulders.',
+        'muscles' => ['Biceps']
+    },
+    {
+        'name' => 'Seated Row',
+        'description' => 'Sit on a bench in front of the row machine and pull weight with both hands from directly in front of you towards your stomach.',
+        'muscles' => ['Latissimus Dorsi', 'Biceps']
+    },
+    {
+        'name' => 'Triceps Extension',
+        'description' => 'Grab triceps machine handles in each hand and push weight away from your body, bending at the elbow.',
+        'muscles' => ['Triceps']
+    },
+    {
+        'name' => 'Squat',
+        'description' => 'Put the bar on your shoulders behind your head and bend at the knee to lower yourself down and back up.',
+        'muscles' => ['Quadriceps', 'Glutes']
+    },
+    {
+        'name' => 'Deadlift',
+        'description' => 'Stand slightly bent at the knee and raise bar off the floor in front of you by straightening your knees.',
+        'muscles' => ['Hamstrings', 'Glutes']
+    },
+    {
+        'name' => 'Calf Raise',
+        'description' => 'Hold weight in each hand will going up on your tip toes and back down.',
+        'muscles' => ['Calves']
+    }
+]
 
-exercise_muslces.each do |exercise_name, muscle_names|
+exercises.each do |exercise|
 
-    exercise = Exercise.create!(name: exercise_name)
+    # Initialize a new exercise
+    new_exercise = Exercise.new(
+        name: exercise['name'], 
+        description: exercise['description']
+    )
 
-    muscle_names.each do |muscle_name|
-        exercise.muscles << Muscle.find_or_create_by!(name: muscle_name)
+    # Associate Muscles, creating them if they don't already exist
+    exercise['muscles'].each do |muscle_name|
+
+        found_muscle = Muscle.find_by(name: muscle_name)
+
+        if found_muscle
+            new_exercise.muscles << found_muscle
+        else
+            new_exercise.muscles.build(name: muscle_name)
+        end
     end
 
+    # Save the exercise
+    new_exercise.save!
 end
 
 # Create some Workouts/Activities/ScheduledWorkouts for each User
@@ -50,7 +111,7 @@ User.all.each do |user|
     # Make 2 Workouts
     2.times do
 
-        # Make a new Workout for the User
+        # Initialize a new Workout for the User
         workout = Workout.new(
             name: workout_terms.sample(2).join(' '),  # Random name of 2 terms
             user: user
