@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'sessions#welcome'
 
   # Standard model routes
-  resources :activities, only: :show
   resources :exercises
   resources :muscles, only: [:index, :show]
   resources :users, only: [:new, :create, :show]
