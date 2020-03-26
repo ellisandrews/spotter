@@ -7,4 +7,5 @@ class Activity < ApplicationRecord
   validates :sets, presence: true
   validates :reps, presence: true
   validates :weight, presence: true
+
 end

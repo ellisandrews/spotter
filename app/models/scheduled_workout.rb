@@ -4,10 +4,10 @@ class ScheduledWorkout < ApplicationRecord
   has_one :user, through: :workout
 
   # Validations
-  # TODO!
+  validates :date, presence: true
 
   def pretty_date
-    date.strftime('%B %-d, %Y (%A)')  # March 25, 2020 (Wednesday)
+    date.strftime('%B %-d, %Y (%A)')  # e.g. 'March 25, 2020 (Wednesday)'
   end
 
   def pretty_completed
