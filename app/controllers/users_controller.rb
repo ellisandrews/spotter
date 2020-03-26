@@ -23,6 +23,19 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit
+    end
+
+    def update
+        @user.assign_attributes(user_params)
+
+        if @user.save
+            redirect_to user_path(@user)
+        else
+            render :edit
+        end
+    end
+
     private
 
     def user_params
