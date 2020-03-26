@@ -8,70 +8,72 @@
     )
 end
 
-# Create Exercises
-exercise_names = [
-    'Bench Press',
-    'Dumbell Fly',
-    'Barbell Overhead Press',
-    'Dumbell Curl',
-    'EZ Bar Curl',
-    'Seated Row',
-    'Triceps Extension',
-    'Squat',
-    'Deadlift',
-    'Calf Raise'
-]
 
-exercise_names.each do |exercise_name| 
-    Exercise.create!(name: exercise_name)
+# Create Exercises and Muscles
+exercise_muslces = {
+    'Bench Press' => ['Pectorals', 'Triceps', 'Deltoids'],
+    'Dumbell Fly' => ['Pectorals'],
+    'Barbell Overhead Press' => ['Deltoids', 'Trapezius'],
+    'Dumbell Curl' => ['Biceps'],
+    'EZ Bar Curl' => ['Biceps'],
+    'Seated Row' => ['Latissimus Dorsi', 'Biceps'],
+    'Triceps Extension' => ['Triceps'],
+    'Squat' => ['Quadriceps', 'Glutes'],
+    'Deadlift' => ['Hamstrings', 'Glutes'],
+    'Calf Raise' => ['Calves']
+}
+
+exercise_muslces.each do |exercise_name, muscle_names|
+
+    exercise = Exercise.create!(name: exercise_name)
+
+    muscle_names.each do |muscle_name|
+        exercise.muscles << Muscle.find_or_create_by!(name: muscle_name)
+    end
+
 end
 
-
-# Create some Workouts for each user (with activities)
+# Create some Workouts/Activities/ScheduledWorkouts for each User
 workout_terms = [
     'Muscle',
     'Ripper',
     'Shred',
     'Bulk',
     'Juice',
-    'Power'
+    'Power',
+    'Body',
+    'Mass'
 ]
-
 
 User.all.each do |user|
     
-    3.times do
+    # Make 2 Workouts
+    2.times do
 
-        # Make a new Workout for the user
+        # Make a new Workout for the User
         workout = Workout.new(
             name: workout_terms.sample(2).join(' '),  # Random name of 2 terms
             user: user
         )
 
-        # Create 2 activities (of different exercises) for the workout
-        Exercise.all.sample(2).each do |exercise|
-            Activity.create!(
+        # Build 2 Activities for the Workout
+        2.times do 
+            workout.activities.build(
                 sets: Faker::Number.between(from: 1, to: 5),
                 reps: Faker::Number.between(from: 4, to: 15),
                 weight: Faker::Number.between(from: 10, to: 100),
-                exercise: exercise,
-                workout: workout
-            )
+                exercise: Exercise.all.sample
+            ) 
         end
 
-        workout.save!  # Save the workout
-        
+        # Save the Workout (and associated Activities)
+        workout.save!  
     end
-end
 
-
-# Create some ScheduledWorkouts for user
-User.all.each do |user|
-
+    # Schedule a Workout for today
     ScheduledWorkout.create!(
         date: Date.today,
         completed: Faker::Boolean.boolean,
         workout: user.workouts.sample
     )
-
 end

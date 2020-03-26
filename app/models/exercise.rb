@@ -2,6 +2,7 @@ class Exercise < ApplicationRecord
     # Associations
     has_many :activities
     has_many :muscle_exercises
+    has_many :muscles, through: :muscle_exercises
 
     # Validations
     validates_presence_of :name
