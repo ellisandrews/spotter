@@ -2,7 +2,7 @@ class WorkoutsController < ApplicationController
 
     before_action :authorized
     before_action :set_workout, only: [:show, :edit, :update, :destroy, :add]
-    before_action :set_exercises, only: [:new, :edit]
+    before_action :set_exercises, only: [:new, :edit, :add]
 
     # TODO: Don't hard-code this, let user control
     @@num_activities = 3
@@ -59,17 +59,16 @@ class WorkoutsController < ApplicationController
     end
 
     def add
-        new_workout = @workout.deep_clone include: :activities
-        new_workout.user = current_user
-        
-        if new_workout.save
-            redirect_to workout_path(new_workout)
-        else
-            # flash[:error] = 'Failed to add workout'
-            flash[:error] = new_workout.errors.full_messages
-            redirect_to workouts_path
-        end
+        @workout = @workout.deep_clone include: :activities
     end
+
+    #     if new_workout.save
+    #         redirect_to edit_workout_path(new_workout)
+    #     else
+    #         flash[:error] = 'Failed to add workout'
+    #         redirect_to workouts_path
+    #     end
+    # end
 
     private
     

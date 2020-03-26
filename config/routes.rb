@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :workouts
 
   # Add a workout to a user
-  post 'workouts/:id/add', to: 'workouts#add', as: 'add_workout'
-
+  get 'workouts/:id/add', to: 'workouts#add', as: 'add_workout'  # Render the form
+  
   # Signup alias for '/users/new' route
   get 'signup', to: 'users#new'
 

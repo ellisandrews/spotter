@@ -16,7 +16,7 @@
   <% if workout.user == current_user %>
     <td></td>
   <% else %>
-    <td><%= button_to 'Add', add_workout_path(workout) %></td>
+    <td><%= button_to 'Add', add_workout_path(workout), method: :get %></td>
   <% end %>
   </tr>
 <% end %>
