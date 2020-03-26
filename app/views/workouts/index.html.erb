@@ -1,9 +1,23 @@
 <h2>Workouts</h2>
 
-<ul>
-  <% @workouts.each do |workout| %>
-    <li><%= link_to workout.name, workout_path(workout) %></li>
-  <% end %>
-</ul>
+<%= render partial: 'messages/flash_error' %>
+<%= render partial: 'messages/flash_message' %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+<% @workouts.each do |workout| %>
+  <tr>
+    <td><%= link_to workout.name, workout_path(workout) %></td>
+    <td><%= workout.description %></td>
+    <td><%= button_to 'Add', root_path %></td>
+  </tr>
+<% end %>
+</table>
+
+<br>
 
 <%= button_to 'New Workout', new_workout_path, method: :get %>

@@ -1,8 +1,6 @@
 <h2>Log In</h2>
 
-<% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
-<% end %>
+<%= render partial: 'messages/flash_errors' %>
 
 <%= form_with url: sessions_path, local: true do %>
 

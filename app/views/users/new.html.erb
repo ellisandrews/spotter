@@ -1,10 +1,6 @@
 <h2>Sign Up</h2>
 
-<ul>
-<% @user.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-<% end %>
-</ul>
+<%= render partial: 'messages/model_errors', locals: { model: @user } %>
 
 <%= form_with model: @user, local: true  do |f| %>
   

@@ -1,8 +1,4 @@
-<ul>
-<% exercise.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-<% end %>
-</ul>
+<%= render partial: 'messages/model_errors', locals: { model: exercise } %>
 
 <%= form_with model: exercise, local: true do |f| %>
   

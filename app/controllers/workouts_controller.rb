@@ -1,14 +1,14 @@
 class WorkoutsController < ApplicationController
 
     before_action :authorized
-    before_action :set_workout, only: [:show, :edit, :update, :destroy]
+    before_action :set_workout, only: [:show, :edit, :update, :destroy, :add]
     before_action :set_exercises, only: [:new, :edit]
 
     # TODO: Don't hard-code this, let user control
     @@num_activities = 3
 
     def index
-        @workouts = Workout.order(:name)
+        @workouts = Workout.where.not(user: current_user).order(:name)
     end
 
     def show
@@ -49,12 +49,24 @@ class WorkoutsController < ApplicationController
             @workout.destroy!
             flash[:message] = 'Workout successfully deleted'
         rescue ActiveRecord::RecordNotFound
-            flash[:message] = 'Workout was already deleted'
+            flash[:error] = 'Workout was already deleted'
         rescue ActiveRecord::RecordNotDestroyed
-            flash[:message] = "Failed to delete workout"
+            flash[:error] = "Failed to delete workout"
             redirect_to workout_path(@workout)
         end
         redirect_to workouts_path
+    end
+
+    def add
+        new_workout = @workout.dup
+        new_workout.user = current_user
+        
+        if new_workout.save
+            redirect_to workout_path(new_workout)
+        else
+            flash[:error] = 'Failed to add workout'
+            redirect_to workouts_path
+        end
     end
 
     private
