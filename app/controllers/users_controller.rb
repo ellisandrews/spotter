@@ -4,11 +4,9 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
 
     def show
-        # TODO: User profile page
     end
 
     def new
-        # Show signup form
         @user = User.new
     end
 
