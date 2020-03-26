@@ -32,6 +32,7 @@
               Workouts
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to 'Schedule', scheduled_workouts_path, class: 'dropdown-item' %>
               <%= link_to 'Browse', workouts_path, class: 'dropdown-item' %>
               <%= link_to 'Create', new_workout_path, class: 'dropdown-item' %>
             </div>
@@ -51,7 +52,6 @@
           <div class="dropdown-menu dropdown-menu-right">
           <% if logged_in? %>
             <%= button_to 'Profile', user_path(current_user), class: 'dropdown-item', method: :get %>
-            <%= button_to 'Schedule', scheduled_workouts_path, class: 'dropdown-item', method: :get %>
             <div class="dropdown-divider"></div>
             <%= button_to 'Log Out', logout_path, class: 'dropdown-item', method: :delete %>
           <% else %>
