@@ -33,8 +33,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # ----- CUSTOM ADDED ----- #
 
+gem 'bootstrap', '~> 4.4.1'
 gem 'deep_cloneable', '~> 3.0.0'
 gem 'faker', '~> 2.10'
+gem 'jquery-rails'  # Required for boostramp in rails 5.1+
 gem 'simple_calendar', '~> 2.0'
 
 
