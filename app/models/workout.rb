@@ -13,6 +13,6 @@ class Workout < ApplicationRecord
   validate :has_at_least_one_activity
 
   def has_at_least_one_activity
-    errors.add(:activities, "must have at least one activity") if activities.size < 1
+    errors.add(:activities, "must have at least one mapped activity") if activities.size < 1
   end
 end

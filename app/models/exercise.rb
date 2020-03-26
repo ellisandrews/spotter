@@ -5,7 +5,8 @@ class Exercise < ApplicationRecord
     has_many :muscles, through: :muscle_exercises
 
     # Validations
-    validates_presence_of :name
+    validates :name, { presence: true, uniqueness: true }
+    validate :has_at_least_one_muscle
 
     # Callbacks
     before_validation :normalize_name
@@ -13,5 +14,8 @@ class Exercise < ApplicationRecord
     def normalize_name
         self.name = name.downcase.titleize
     end
-    
+
+    def has_at_least_one_muscle
+        errors.add(:muscles, "must have at least one mapped muscle") if muscles.size < 1
+    end
 end

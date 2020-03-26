@@ -15,6 +15,11 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
     
+  <br>
+
+  <label>Muscles</label>
+  <%= f.collection_check_boxes :muscle_ids, muscles, :id, :name %>
+
   <br><br>
 
   <%= f.submit %>

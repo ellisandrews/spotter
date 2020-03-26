@@ -2,6 +2,7 @@ class ExercisesController < ApplicationController
 
     before_action :logged_in
     before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+    before_action :set_muscles, only: [:new, :edit]
 
     def index
         @exercises = Exercise.order(:name)
@@ -20,7 +21,7 @@ class ExercisesController < ApplicationController
         if @exercise.save
             redirect_to exercise_path(@exercise)
         else
-            render :new
+            re_render_form_view :new
         end
     end
 
@@ -34,7 +35,7 @@ class ExercisesController < ApplicationController
         if @exercise.save
             redirect_to exercise_path(@exercise)
         else
-            render :edit
+            re_render_form_view :edit
         end
     end
 
@@ -54,11 +55,20 @@ class ExercisesController < ApplicationController
     private
 
     def exercise_params
-        params.require(:exercise).permit(:name, :description, :image_url)
+        params.require(:exercise).permit(:name, :description, :image_url, :muscle_ids => [])
     end
 
     def set_exercise
         @exercise = Exercise.find(params[:id])
+    end
+
+    def set_muscles
+        @muscles = Muscle.order(:name)
+    end
+
+    def re_render_form_view(view)
+        set_muscles
+        render view
     end
 
 end
