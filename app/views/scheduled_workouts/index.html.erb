@@ -5,9 +5,14 @@
   <%= date.day %>
 
   <% scheduled_workouts.each do |scheduled_workout| %>
-    <div>
-      <%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout) %>
-    </div>
+    <% case scheduled_workout.completed %>
+    <% when true %>
+      <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-success" %></div>
+    <% when false %>
+      <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-danger" %></div>
+    <% else %>
+      <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-info" %></div>
+    <% end %>
   <% end %>
 
 <% end %>
