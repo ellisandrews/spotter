@@ -1,13 +1,17 @@
 <% if logged_in? %>
-  <h2>Welcome, <%= current_user.first_name %>!</h2>
+  <h2 class="p-4">Welcome, <%= current_user.first_name %>!</h2>
 <% else %>
-  <h2>Welcome to Spotter!</h2>
+  <h2 class="p-4">Welcome to Spotter!</h2>
 <% end %>
 
 <% if logged_in? %>
-  <p>Happy lifting!</p>
+  <h4 class="ml-4 mb-4 mr-4">Happy lifting!</h4>
 <% else %>
-  <p>Create an account or log in to start tracking your progress.</p>
-  <%= button_to 'Sign Up', signup_path, method: :get %></li>
-  <%= button_to 'Log In', login_path, method: :get %></li>
+  <h4 class="ml-4 mb-4 mr-4">Create an account or log in to start tracking your progress.</h4>
+  <div class="btn-toolbar ml-4 float-left">
+    <%= button_to 'Sign Up', signup_path, method: :get, class: "mr-3" %>
+    <%= button_to 'Log In', login_path, method: :get, class: "mr-3" %>
+  </div>
 <% end %>
+
+<img src="https://cdn.clipart.email/47aaca56584becdc092a4ead2794c0d2_motivation-clipart-fitness-motivation-motivation-fitness-_634-531.png" class="img-fluid rounded mx-auto d-block" alt="Responsive clipart image">
