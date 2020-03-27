@@ -7,10 +7,12 @@ class Muscle < ApplicationRecord
     validates_presence_of :name
 
     # Callbacks
-    before_save :normalize_name
+    before_validation :normalize_name
 
     def normalize_name
-        self.name = name.downcase.titleize
+        if self.name
+            self.name = self.name.downcase.titleize
+        end
     end
     
 end

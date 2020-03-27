@@ -8,8 +8,9 @@ RSpec.describe Muscle do
         expect(muscle).to_not be_valid
     end
 
-    it "normalizes the name before saving" do
-        muscle = Muscle.create(name: 'biceps')
+    it "normalizes the name before validating" do
+        muscle = Muscle.new(name: 'biceps')
+        muscle.valid?
         expect(muscle.name).to eq('Biceps')
     end
 

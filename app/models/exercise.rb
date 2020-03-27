@@ -12,7 +12,9 @@ class Exercise < ApplicationRecord
     before_validation :normalize_name
 
     def normalize_name
-        self.name = name.downcase.titleize
+        if self.name
+            self.name = self.name.downcase.titleize
+        end
     end
 
     def has_at_least_one_muscle
