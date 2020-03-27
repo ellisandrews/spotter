@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # Add a workout to a user
   get 'workouts/:id/add', to: 'workouts#add', as: 'add_workout'  # Render the form
   
+  # Analytics page for a user
+  get 'analytics', to: 'users#analytics'
+
   # Signup alias for '/users/new' route
   get 'signup', to: 'users#new'
 

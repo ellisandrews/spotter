@@ -3,6 +3,7 @@ class Exercise < ApplicationRecord
     has_many :activities
     has_many :muscle_exercises
     has_many :muscles, through: :muscle_exercises
+    has_many :workouts, through: :activities
 
     # Validations
     validates :name, { presence: true, uniqueness: true }

@@ -36,6 +36,9 @@ class UsersController < ApplicationController
         end
     end
 
+    def analytics
+    end
+
     private
 
     def user_params
