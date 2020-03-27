@@ -114,8 +114,8 @@ end
 
 User.all.each do |user|
     
-    # Make 2 Workouts
-    2.times do
+    # Make 3 Workouts
+    3.times do
 
         # Initialize a new Workout for the User
         workout = Workout.new(
@@ -123,8 +123,8 @@ User.all.each do |user|
             user: user
         )
 
-        # Build 2 Activities for the Workout
-        2.times do 
+        # Build 3 Activities for the Workout
+        3.times do 
             workout.activities.build(
                 sets: Faker::Number.between(from: 1, to: 5),
                 reps: Faker::Number.between(from: 4, to: 15),
@@ -137,10 +137,23 @@ User.all.each do |user|
         workout.save!  
     end
 
+    # Schedule a Workout for yesterday
+    ScheduledWorkout.create!(
+        date: Date.today - 1,
+        completed: true,
+        workout: user.workouts.sample
+    )
+
     # Schedule a Workout for today
     ScheduledWorkout.create!(
         date: Date.today,
-        completed: Faker::Boolean.boolean,
+        completed: false,
+        workout: user.workouts.sample
+    )
+
+    # Schedule a Workout for tomorrow
+    ScheduledWorkout.create!(
+        date: Date.today + 1,
         workout: user.workouts.sample
     )
 end
