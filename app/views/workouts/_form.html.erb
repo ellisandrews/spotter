@@ -1,48 +1,50 @@
 <%= render partial: 'messages/model_errors', locals: { model: workout } %>
 
-<%= form_with model: workout, local: true do |f| %>
-  <div class="form-group row">  
-    <%= f.label :name, class: "col-sm-1 col-form-label" %>
-    <div class="col-sm-2">
-      <%= f.text_field :name, class: "form-control" %>
+<div class="px-5 py-3">
+  <%= form_with model: workout, local: true do |f| %>
+    <div class="form-group row">  
+      <%= f.label :name, class: "col-sm-1 col-form-label" %>
+      <div class="col-sm-2">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <%= f.label :description, class: "col-sm-1 col-form-label" %>
-    <div class="col-sm-4">
-      <%= f.text_field :description, class: "form-control" %>
+    <div class="form-group row">
+      <%= f.label :description, class: "col-sm-1 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-1 col-form-label">Activities</label>
-    <ul>
-      <%= f.fields_for :activities do |activities_form| %>
-        <li>
-          <div class="form-group">
-            <%= activities_form.label :exercise_id %>
-            <%= activities_form.collection_select :exercise_id, exercises, :id, :name, prompt: true, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= activities_form.label :sets %>
-            <%= activities_form.number_field :sets, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= activities_form.label :reps %>
-            <%= activities_form.number_field :reps, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= activities_form.label :weight %>
-            <%= activities_form.number_field :weight, class: "form-control" %>
-          </div>
-          <div class="form-group form-check">
-            <%= activities_form.check_box :_destroy, class: "form-check-input" %>
-            <%= activities_form.label :_destroy, class: "form-check-label" %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+    <div class="form-group row">
+      <label class="col-sm-1 col-form-label">Activities</label>
+      <ul>
+        <%= f.fields_for :activities do |activities_form| %>
+          <li>
+            <div class="form-group">
+              <%= activities_form.label :exercise_id %>
+              <%= activities_form.collection_select :exercise_id, exercises, :id, :name, prompt: true, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= activities_form.label :sets %>
+              <%= activities_form.number_field :sets, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= activities_form.label :reps %>
+              <%= activities_form.number_field :reps, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= activities_form.label :weight %>
+              <%= activities_form.number_field :weight, class: "form-control" %>
+            </div>
+            <div class="form-group form-check">
+              <%= activities_form.check_box :_destroy, class: "form-check-input" %>
+              <%= activities_form.label :_destroy, class: "form-check-label" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
-  <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-primary' %>
 
-<% end %>
+  <% end %>
+</div>
