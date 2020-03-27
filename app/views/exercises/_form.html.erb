@@ -2,26 +2,37 @@
 
 <%= form_with model: exercise, local: true do |f| %>
   
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="form-group row">
+    <%= f.label :name, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
 
-  <br>
+  <div class="form-group row">
+    <%= f.label :image_url, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :image_url, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :image_url %>
-  <%= f.text_field :image_url %>
+  <div class="form-group row">
+    <%= f.label :description, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-4">
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+  </div>
 
-  <br>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">Muscles</label>
+    <%= f.collection_check_boxes(:muscle_ids, muscles, :id, :name) do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class: "form-check-input" %>
+        <%= b.label class: "form-check-label" %>
+      </div>
+    <% end %>    
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-    
-  <br>
-
-  <label>Muscles</label>
-  <%= f.collection_check_boxes :muscle_ids, muscles, :id, :name %>
-
-  <br><br>
-
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
 
 <% end %>
