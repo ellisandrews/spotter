@@ -5,10 +5,10 @@
 <% end %>
 
 <% if logged_in? %>
-  <h4 class="ml-4 mb-4 mr-4">Happy lifting!</h4>
+  <h4 class="px-5">Happy lifting!</h4>
 <% else %>
-  <h4 class="ml-4 mb-4 mr-4">Create an account or log in to start tracking your progress.</h4>
-  <div class="btn-toolbar ml-4 float-left">
+  <h4 class="px-5 pb-3">Create an account or log in to start tracking your progress.</h4>
+  <div class="btn-toolbar px-5 float-left">
     <%= button_to 'Sign Up', signup_path, method: :get, class: "mr-3" %>
     <%= button_to 'Log In', login_path, method: :get, class: "mr-3" %>
   </div>
