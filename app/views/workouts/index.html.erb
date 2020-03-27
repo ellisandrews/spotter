@@ -3,29 +3,31 @@
 <%= render partial: 'messages/flash_error' %>
 <%= render partial: 'messages/flash_message' %>
 
-<table class="table table-striped table-bordered table-hover table-sm">
-  <thead class="thead-dark">
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @workouts.each do |workout| %>
-    <tr>
-      <td><%= link_to workout.name, workout_path(workout) %></td>
-      <td><%= workout.description %></td>
-    <% if workout.user == current_user %>
-      <td></td>
-    <% else %>
-      <td><%= button_to 'Add', add_workout_path(workout), method: :get %></td>
+<div class="px-5 py-3">
+  <table class="table table-striped table-bordered table-hover table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @workouts.each do |workout| %>
+      <tr>
+        <td><%= link_to workout.name, workout_path(workout) %></td>
+        <td><%= workout.description %></td>
+      <% if workout.user == current_user %>
+        <td></td>
+      <% else %>
+        <td><%= button_to 'Add', add_workout_path(workout), method: :get %></td>
+      <% end %>
+      </tr>
     <% end %>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
-<br>
-
-<%= button_to 'New Workout', new_workout_path, method: :get %>
+<div class="px-5 py-3">
+  <%= button_to 'New Workout', new_workout_path, method: :get %>
+</div>
