@@ -1,29 +1,25 @@
-<h2 class="px-5 py-3">Log In</h2>
+<h2 class="py-3">Log In</h2>
 
-<div class="px-5">
+<%= render partial: 'messages/flash_error' %>
 
-  <%= render partial: 'messages/flash_error' %>
+<%= form_with url: sessions_path, local: true do %>
 
-  <%= form_with url: sessions_path, local: true do %>
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" name="password">
-    </div>
-
-    <div class="py-3">
-      <%= submit_tag 'Log In', class: "btn btn-primary" %>
-    </div>
-
-  <% end %>
-
-  <div class="py-3">
-    <p>Don't have an account? <%= link_to 'Sign up', signup_path %>.</p>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
   </div>
 
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password">
+  </div>
+
+  <div class="py-3">
+    <%= submit_tag 'Log In', class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+
+<div class="py-3">
+  <p>Don't have an account? <%= link_to 'Sign up', signup_path %>.</p>
 </div>

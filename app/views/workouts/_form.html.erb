@@ -1,6 +1,6 @@
 <%= render partial: 'messages/model_errors', locals: { model: workout } %>
 
-<div class="px-5 py-3">
+<div class="py-3">
   <%= form_with model: workout, local: true do |f| %>
     <div class="form-group row">  
       <%= f.label :name, class: "col-sm-1 col-form-label" %>

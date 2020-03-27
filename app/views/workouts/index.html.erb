@@ -1,9 +1,9 @@
-<h2 class="px-5 py-3">Workouts</h2>
+<h2 class="py-3">Workouts</h2>
 
 <%= render partial: 'messages/flash_error' %>
 <%= render partial: 'messages/flash_message' %>
 
-<div class="px-5 py-3">
+<div class="py-3">
   <table class="table table-striped table-bordered table-hover table-sm">
     <thead class="thead-dark">
       <tr>
@@ -28,6 +28,6 @@
   </table>
 </div>
 
-<div class="px-5 py-3">
+<div class="py-3">
   <%= button_to 'New Workout', new_workout_path, method: :get %>
 </div>

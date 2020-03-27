@@ -1,4 +1,4 @@
-<h2 class="px-5 py-3">Exercises</h2>
+<h2 class="py-3">Exercises</h2>
 
 <ul>
   <% @exercises.each do |exercise| %>
@@ -6,4 +6,6 @@
   <% end %>
 </ul>
 
-<%= button_to 'New Exercise', new_exercise_path, method: :get %>
+<div class="py-3">
+  <%= button_to 'New Exercise', new_exercise_path, method: :get %>
+</div>

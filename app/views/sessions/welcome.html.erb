@@ -1,10 +1,9 @@
 <% if logged_in? %>
-  <h2 class="px-5 py-3">Welcome, <%= current_user.first_name %>!</h2>
+  <h2 class="py-3">Welcome, <%= current_user.first_name %>!</h2>
 <% else %>
-  <h2 class="px-5 py-3">Welcome to Spotter!</h2>
+  <h2 class="py-3">Welcome to Spotter!</h2>
 <% end %>
 
-<div class="px-5">
 <% if logged_in? %>
   <h4>Happy lifting!</h4>
 <% else %>
@@ -14,7 +13,6 @@
     <%= button_to 'Log In', login_path, method: :get, class: "mr-3" %>
   </div>
 <% end %>
-</div>
 
 <div>
   <img src="https://cdn.clipart.email/47aaca56584becdc092a4ead2794c0d2_motivation-clipart-fitness-motivation-motivation-fitness-_634-531.png" class="img-fluid rounded mx-auto d-block" alt="Responsive clipart image">

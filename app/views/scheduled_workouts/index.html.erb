@@ -1,24 +1,22 @@
-<h2 class="px-5 py-3">Workout Schedule</h2>
+<h2 class="py-3">Workout Schedule</h2>
 
-<div class="px-5">
-  <%= month_calendar(attribute: :date, events: @scheduled_workouts) do |date, scheduled_workouts| %>
-    
-    <%= date.day %>
+<%= month_calendar(attribute: :date, events: @scheduled_workouts) do |date, scheduled_workouts| %>
+  
+  <%= date.day %>
 
-    <% scheduled_workouts.each do |scheduled_workout| %>
-      <% case scheduled_workout.completed %>
-      <% when true %>
-        <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-success" %></div>
-      <% when false %>
-        <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-danger" %></div>
-      <% else %>
-        <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-info" %></div>
-      <% end %>
+  <% scheduled_workouts.each do |scheduled_workout| %>
+    <% case scheduled_workout.completed %>
+    <% when true %>
+      <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-success" %></div>
+    <% when false %>
+      <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-danger" %></div>
+    <% else %>
+      <div><%= link_to scheduled_workout.workout.name, scheduled_workout_path(scheduled_workout), class: "text-info" %></div>
     <% end %>
-
   <% end %>
-</div>
 
-<div class="px-5 py-3">
+<% end %>
+
+<div class="py-3">
   <%= button_to 'Schedule Workout', new_scheduled_workout_path, method: :get %>
 </div>
