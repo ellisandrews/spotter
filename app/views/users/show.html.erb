@@ -1,8 +1,10 @@
 <h2 class="px-5 py-3">Profile</h2>
 
-<p>Name: <%= @user.full_name %></p>
-<p>Email: <%= @user.email %></p>
+<div class="px-5 py-3">
+  <p>Name: <%= @user.full_name %></p>
+  <p>Email: <%= @user.email %></p>
+</div>
 
-<br>
-
-<%= button_to 'Edit', edit_user_path(@user), method: :get %>
+<div class="px-5 py-3">
+  <%= button_to 'Edit', edit_user_path(@user), method: :get %>
+</div>
