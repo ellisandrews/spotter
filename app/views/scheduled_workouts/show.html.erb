@@ -4,4 +4,12 @@
 <p>Date: <%= @scheduled_workout.pretty_date %></p>
 <p>Completed: <%= @scheduled_workout.pretty_completed %></p>
 
+<% if @scheduled_workout.user == @user %>
+  <br>
+  <%= button_to 'Edit', edit_scheduled_workout_path(@scheduled_workout), method: :get %>
+  <%= button_to 'Delete', scheduled_workout_path(@scheduled_workout), method: :delete %>
+<% end %>
+
+<br>
+
 <%= link_to 'Back', scheduled_workouts_path %>
