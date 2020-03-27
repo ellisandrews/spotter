@@ -19,6 +19,12 @@
 
   <br><br>
 
-  <%= f.submit 'Schedule', class: 'btn btn-primary' %>
+  <div class="py-3">
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
 
 <% end %>
+
+<div class="py-3">
+  <%= link_to 'Back to Schedule', scheduled_workouts_path %>
+</div>

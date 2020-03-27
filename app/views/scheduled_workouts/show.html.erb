@@ -5,11 +5,12 @@
 <p>Completed: <%= @scheduled_workout.pretty_completed %></p>
 
 <% if @scheduled_workout.user == @user %>
-  <br>
-  <%= button_to 'Edit', edit_scheduled_workout_path(@scheduled_workout), method: :get %>
-  <%= button_to 'Delete', scheduled_workout_path(@scheduled_workout), method: :delete %>
+<div class="btn-toolbar py-3">
+  <%= button_to 'Edit', edit_scheduled_workout_path(@scheduled_workout), method: :get, class: "mr-3" %>
+  <%= button_to 'Delete', scheduled_workout_path(@scheduled_workout), method: :delete, class: "mr-3" %>
+</div>
 <% end %>
 
-<br>
-
-<%= link_to 'Back', scheduled_workouts_path %>
+<div class="py-3">
+  <%= link_to 'Back to Schedule', scheduled_workouts_path %>
+</div>
