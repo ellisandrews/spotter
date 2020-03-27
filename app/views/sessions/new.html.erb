@@ -4,18 +4,20 @@
 
 <%= form_with url: sessions_path, local: true do %>
 
-  <%= label_tag 'Email' %>
-  <%= text_field_tag :email %>
-  
-  <br>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+  </div>
 
-  <%= label_tag 'Password' %>
-  <%= password_field_tag :password %>
-  
-  <br><br>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password">
+  </div>
 
   <%= submit_tag 'Log In' %>
 
 <% end %>
+
+<br>
 
 <p>Don't have an account? <%= link_to 'Sign up', signup_path %>.</p>
