@@ -4,33 +4,45 @@
 
 <%= form_with model: @user, local: true  do |f| %>
   
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <div class="form-group row">
+    <%= f.label :first_name, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :first_name %>
+    </div>
+  </div>
 
-  <br>
+  <div class="form-group row">
+    <%= f.label :last_name, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :last_name %>
+    </div>
+  </div>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-
-  <br>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+  <div class="form-group row">
+    <%= f.label :email, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :email %>
+    </div>
+  </div>
   
-  <br>
+  <div class="form-group row">
+    <%= f.label :password, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.password_field :password %>
+    </div>
+  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  
-  <br>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  
-  <br><br>
+  <div class="form-group row">
+    <%= f.label :password_confirmation, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
 
   <%= f.submit 'Sign Up' %>
 
 <% end %>
+
+<br>
 
 <p>Already have an account? <%= link_to "Log in", login_path %>.</p>

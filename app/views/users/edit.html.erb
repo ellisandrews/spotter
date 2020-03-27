@@ -4,21 +4,27 @@
 
 <%= form_with model: @user, local: true  do |f| %>
   
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <div class="form-group row">
+    <%= f.label :first_name, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+  </div>
 
-  <br>
+  <div class="form-group row">
+    <%= f.label :last_name, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <div class="form-group row">
+    <%= f.label :email, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :email, disabled: true, class: "form-control" %>
+    </div>
+  </div>
 
-  <br>
-
-  <%= f.label :email %>
-  <%= f.text_field :email, disabled: true %>
-  
-  <br><br>
-
-  <%= f.submit 'Update' %>
+  <%= f.submit 'Update', class: 'btn btn-primary' %>
 
 <% end %>
