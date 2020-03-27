@@ -4,8 +4,9 @@
     <!-- Bootstrap meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title>Spotter</title>
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,19 +14,22 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to 'Spotter', root_path , class: 'navbar-brand' %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Navbar buttons -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    
+      <div class="container-fluid">
+        
+        <!-- Brand Name Home Link -->
+        <div class="navbar-header">
+          <%= link_to 'Spotter', root_path , class: ['navbar-brand', 'text-white'] %>
+        </div>
+
+        <!-- Navbar buttons (left) -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarWorkoutsDropdownLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Workouts
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu" aria-labelledby="navbarWorkoutsDropdownLink">
               <%= link_to 'Schedule', scheduled_workouts_path, class: 'dropdown-item' %>
               <%= link_to 'Browse', workouts_path, class: 'dropdown-item' %>
               <%= link_to 'Create', new_workout_path, class: 'dropdown-item' %>
