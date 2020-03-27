@@ -8,6 +8,7 @@
     <thead class="thead-dark">
       <tr>
         <th>Name</th>
+        <th>Owner</th>
         <th>Description</th>
         <th>Action</th>
       </tr>
@@ -16,9 +17,15 @@
     <% @workouts.each do |workout| %>
       <tr>
         <td><%= link_to workout.name, workout_path(workout) %></td>
+        <td><%= workout.user.full_name %></td>
         <td><%= workout.description %></td>
       <% if workout.user == current_user %>
-        <td></td>
+        <td>
+          <div class="btn-group">
+            <%= button_to 'Edit', edit_workout_path(workout), method: :get, class: "mr-3" %>
+            <%= button_to 'Delete', workout_path(workout), method: :delete %>
+          </div>
+        </td>
       <% else %>
         <td><%= button_to 'Add', add_workout_path(workout), method: :get %></td>
       <% end %>

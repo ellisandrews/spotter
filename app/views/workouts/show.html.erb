@@ -1,8 +1,8 @@
 <h2 class="py-3">Workout</h2>
 
 <div class="py-3">
-  <p>Owner: <%= @workout.user.full_name %></p>
   <p>Name: <%= @workout.name %></p>
+  <p>Owner: <%= @workout.user.full_name %></p>
   <p>Description: <%= @workout.description %></p>
 </div>
 
@@ -30,14 +30,12 @@
   </table>
 </div>
 
-<div class="py-3">
 <% if @workout.user == @user %>
-  <div class="btn-toolbar">
+  <div class="btn-toolbar py-3">
     <%= button_to 'Edit', edit_workout_path(@workout), method: :get, class: "mr-3" %>
     <%= button_to 'Delete', workout_path(@workout), method: :delete, class: "mr-3" %>
   </div>
 <% end %>
-</div>
 
 <div class="py-3">
   <%= link_to 'All Workouts', workouts_path %>
