@@ -20,13 +20,13 @@
         
         <!-- Brand Name Home Link -->
         <div class="navbar-header">
-          <%= link_to 'Spotter', root_path , class: ['navbar-brand', 'text-white'] %>
+          <%= link_to 'spotter', root_path , class: ['navbar-brand', 'text-white'] %>
         </div>
 
         <!-- Navbar buttons (left) -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarWorkoutsDropdownLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarWorkoutsDropdownLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Workouts
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarWorkoutsDropdownLink">
@@ -36,10 +36,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <%= link_to 'Exercises', exercises_path, class: 'nav-link' %>
+            <%= link_to 'Exercises', exercises_path, class: ['nav-link', 'text-light'] %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Anatomy', muscles_path, class: 'nav-link' %>
+            <%= link_to 'Anatomy', muscles_path, class: ['nav-link', 'text-light'] %>
           </li>
         </ul>
         <!-- Menu dropdown -->
