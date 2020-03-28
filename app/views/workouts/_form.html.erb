@@ -1,47 +1,59 @@
 <%= render partial: 'messages/model_errors', locals: { model: workout } %>
 
 <div class="py-3">
+
   <%= form_with model: workout, local: true do |f| %>
+    
     <div class="form-group row">  
       <%= f.label :name, class: "col-sm-1 col-form-label" %>
       <div class="col-sm-2">
         <%= f.text_field :name, class: "form-control" %>
       </div>
     </div>
+    
     <div class="form-group row">
       <%= f.label :description, class: "col-sm-1 col-form-label" %>
-      <div class="col-sm-4">
-        <%= f.text_field :description, class: "form-control" %>
+      <div class="col-8">
+        <%= f.text_area :description, class: "form-control" %>
       </div>
     </div>
+    
     <div class="form-group row">
       <label class="col-sm-1 col-form-label">Activities</label>
-      <ul>
-        <%= f.fields_for :activities do |activities_form| %>
-          <li>
-            <div class="form-group">
-              <%= activities_form.label :exercise_id %>
+      <ol>
+      <%= f.fields_for :activities do |activities_form| %>
+        <li>
+          <div class="form-group row form-inline align-items-center">
+            
+            <div class="col">
+              <%= activities_form.label :exercise_id, class: "col-form-label" %>
               <%= activities_form.collection_select :exercise_id, exercises, :id, :name, prompt: true, class: "form-control" %>
             </div>
-            <div class="form-group">
-              <%= activities_form.label :sets %>
+            
+            <div class="col">
+              <%= activities_form.label :sets, class: "col-form-label" %>
               <%= activities_form.number_field :sets, class: "form-control" %>
             </div>
-            <div class="form-group">
-              <%= activities_form.label :reps %>
+            
+            <div class="col">
+              <%= activities_form.label :reps, class: "col-form-label" %>
               <%= activities_form.number_field :reps, class: "form-control" %>
             </div>
-            <div class="form-group">
-              <%= activities_form.label :weight %>
+            
+            <div class="col">
+              <%= activities_form.label :weight, class: "col-form-label" %>
               <%= activities_form.number_field :weight, class: "form-control" %>
             </div>
-            <div class="form-group form-check">
-              <%= activities_form.check_box :_destroy, class: "form-check-input" %>
+            
+            <div class="col">
               <%= activities_form.label :_destroy, class: "form-check-label" %>
+              <%= activities_form.check_box :_destroy, class: "form-check-input" %>
             </div>
-          </li>
-        <% end %>
-      </ul>
+          
+          </div>
+        </li>
+      <% end %>
+      </ol>
     </div>
 
     <%= f.submit class: 'btn btn-primary' %>
