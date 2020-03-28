@@ -1,19 +1,38 @@
-<% if logged_in? %>
-  <h2 class="py-3">Welcome, <%= current_user.first_name %>!</h2>
-<% else %>
-  <h2 class="py-3">Welcome to Spotter!</h2>
-<% end %>
+<div class="container">
+  <div class="row align-items-center">
+    
+    <div class="col">
+      <div class="py-3">
 
-<% if logged_in? %>
-  <h4>Happy lifting!</h4>
-<% else %>
-  <h4 class="pb-3">Create an account or log in to start tracking your progress.</h4>
-  <div class="btn-toolbar float-left">
-    <%= button_to 'Sign Up', signup_path, method: :get, class: "mr-3" %>
-    <%= button_to 'Log In', login_path, method: :get, class: "mr-3" %>
+        <div>
+        <% if logged_in? %>
+          <h2>Hey there, <%= current_user.first_name %>!</h2>
+        <% else %>
+          <h2>Welcome to Spotter!</h2>
+        <% end %>
+        </div>
+
+        <div class="py-4">
+        <% if logged_in? %>
+          <h4>Looking forward to spotting you today &#x1F4AA;</h4>
+        </div>
+        <% else %>
+          <h4>Log in to start tracking your progress.</h4>
+        </div>
+          <div class="btn-toolbar float-left pt-2">
+            <%= button_to 'Sign Up', signup_path, method: :get, class: "mr-3" %>
+            <%= button_to 'Log In', login_path, method: :get, class: "mr-3" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="p-3">
+        <%= image_tag "gym_buddy_clipart.png", class: "img-fluid" %>
+      </div>
+    </div>
+
   </div>
-<% end %>
-
-<div>
-  <%= image_tag "gym_buddy_clipart.png", class: "img-fluid rounded mx-auto d-block" %>
 </div>
