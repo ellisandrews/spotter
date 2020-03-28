@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         @user.assign_attributes(user_params)
 
         if @user.save
-            redirect_to user_path(@user)
+            redirect_to profile_path
         else
             render :edit
         end

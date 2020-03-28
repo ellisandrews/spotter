@@ -6,20 +6,19 @@ Rails.application.routes.draw do
   # Standard model routes
   resources :exercises, only: [:index, :show, :new, :create]
   resources :muscles, only: [:index, :show]
-  resources :users, only: [:show, :new, :create, :edit, :update]
+  resources :users, only: [:create, :edit, :update]
   resources :scheduled_workouts
   resources :workouts
+
+  # User routes
+  get 'signup', to: 'users#new'           # '/signup' instead of '/users/new' route
+  get 'profile', to: 'users#show'         # '/profile' instead of '/users/:id'
+  get 'analytics', to: 'users#analytics'  # Analytics page for a user
 
   # Add a workout to a user
   get 'workouts/:id/add', to: 'workouts#add', as: 'add_workout'  # Render the form
   
-  # Analytics page for a user
-  get 'analytics', to: 'users#analytics'
-
-  # Signup alias for '/users/new' route
-  get 'signup', to: 'users#new'
-
-  # Sessions routes
+  # Session routes
   get 'login', to: 'sessions#new'
   post 'sessions', to: 'sessions#create'
   delete 'sessions', to: 'sessions#destroy', as: 'logout'
