@@ -33,7 +33,7 @@
 <% if @workout.user == @user %>
   <div class="btn-toolbar py-3">
     <%= button_to 'Edit', edit_workout_path(@workout), method: :get, class: "mr-3" %>
-    <%= button_to 'Delete', workout_path(@workout), method: :delete, class: "mr-3" %>
+    <%= button_to 'Delete', workout_path(@workout), method: :delete, data: { confirm: "Are you sure you want to delete this workout? Doing so will also remove all instances from your schedule. This cannot be undone." }, class: "mr-3" %>
   </div>
 <% end %>
 

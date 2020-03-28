@@ -1,3 +1,7 @@
 <h2 class="py-3">Edit Scheduled Workout</h2>
 
 <%= render partial: 'form', locals: { scheduled_workout: @scheduled_workout, workouts: @workouts } %>
+
+<div class="py-3">
+  <%= link_to 'Cancel', scheduled_workout_path(@scheduled_workout) %>
+</div>
