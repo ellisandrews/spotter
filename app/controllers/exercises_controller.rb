@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
 
-    before_action :logged_in
+    before_action :logged_in, except: [:index, :show]
     before_action :set_exercise, only: [:show, :edit, :update, :destroy]
     before_action :set_muscles, only: [:new, :edit]
 

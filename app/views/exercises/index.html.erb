@@ -6,6 +6,8 @@
   <% end %>
 </ul>
 
+<% if logged_in? %>
 <div class="py-3">
   <%= button_to 'New Exercise', new_exercise_path, method: :get %>
 </div>
+<% end %>
