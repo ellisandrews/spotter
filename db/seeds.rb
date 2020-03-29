@@ -5,15 +5,21 @@ require 'set'
 User.create!(
     first_name: 'Ellis',
     last_name: 'Andrews',
+    username: 'eandrews',
     email: 'ellis@spotter.com',
     password: 'pw'
 )
 
 # Create fake Users
 4.times do
+
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+
     User.create!(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
+        first_name: first_name,
+        last_name: last_name,
+        username: (first_name[0] + last_name).downcase,
         email: Faker::Internet.email,
         password: Faker::Internet.password
     )

@@ -6,13 +6,25 @@ class User < ApplicationRecord
     # Validations
     validates :first_name, presence: true
     validates :last_name, presence: true
+    validates :username, presence: true
     validates :email, presence: true, uniqueness: { case_sensitive: false }
+    validate :has_unique_slug
 
     # Auth
     has_secure_password
 
     # Callbacks
-    before_validation :normalize_name
+    before_validation :normalize_name, :slugify_username
+
+    def has_unique_slug
+        if User.exists? slug: slug
+            errors.add :username, 'has already been taken'
+        end
+    end
+
+    def slugify_username
+        self.slug = username.parameterize
+    end
 
     def normalize_name
         self.first_name = first_name.downcase.titleize
@@ -63,7 +75,4 @@ class User < ApplicationRecord
         end
     end
 
-    # def workout_completion_rate
-    #     ScheduledWorkout.where(user: self, completed: true, date: Date.new..Date.today).count.to_f / ScheduledWorkout.where(user: self, date: Date.new..Date.today).count
-    # end
 end
