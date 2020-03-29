@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Standard model routes
   resources :exercises, only: [:index, :show, :new, :create]
   resources :muscles, only: [:index, :show]
-  resources :users, only: [:create, :edit, :update]
+  resources :users, only: [:index, :create, :edit, :update]
   resources :scheduled_workouts
   resources :workouts
 

@@ -3,24 +3,24 @@
 <%= render partial: 'messages/model_errors', locals: { model: @user } %>
 
 <%= form_with model: @user, local: true  do |f| %>
-  
+
   <div class="form-group row">
-    <%= f.label :first_name, class: "col-sm-1 col-form-label" %>
-    <div class="col-sm-2">
+    <%= f.label :first_name, class: "col-2 col-form-label" %>
+    <div class="col-3">
       <%= f.text_field :first_name, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :last_name, class: "col-sm-1 col-form-label" %>
-    <div class="col-sm-2">
+    <%= f.label :last_name, class: "col-2 col-form-label" %>
+    <div class="col-3">
       <%= f.text_field :last_name, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :username, class: "col-sm-1 col-form-label" %>
-    <div class="col-sm-2">
+    <%= f.label :username, class: "col-2 col-form-label" %>
+    <div class="col-3">
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">@</div>
@@ -31,22 +31,22 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label :email, class: "col-sm-1 col-form-label" %>
-    <div class="col-sm-2">
+    <%= f.label :email, class: "col-2 col-form-label" %>
+    <div class="col-3">
       <%= f.text_field :email, class: "form-control" %>
     </div>
   </div>
   
   <div class="form-group row">
-    <%= f.label :password, class: "col-sm-1 col-form-label" %>
-    <div class="col-sm-2">
+    <%= f.label :password, class: "col-2 col-form-label" %>
+    <div class="col-3">
       <%= f.password_field :password, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :password_confirmation, class: "col-sm-1 col-form-label" %>
-    <div class="col-sm-2">
+    <%= f.label :password_confirmation, class: "col-2 col-form-label" %>
+    <div class="col-3">
       <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
   </div>

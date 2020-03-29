@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
 
-    before_action :logged_in, except: [:new, :create]
-    before_action :authorized, except: [:new, :create]
+    before_action :logged_in, except: [:index, :new, :create]
+    before_action :authorized, except: [:index, :new, :create]
+
+    def index
+        # When a user makes an invalid new user request, this takes them to `/users`.
+        # As we have no users index view, if they refresh the page here just refresh the signup page.
+        redirect_to signup_path
+    end
 
     def show
     end
@@ -42,7 +48,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
     end
 
     def authorized

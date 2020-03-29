@@ -1,5 +1,5 @@
-<div class="text-danger">
-  <% if flash[:error] %>
-    <p ><%= flash[:error] %></p>
-  <% end %>
+<% if flash[:error] %>
+<div class="alert alert-danger" role="alert">
+  <%= flash[:error] %>
 </div>
+<% end %>
